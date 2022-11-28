@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login page</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
+        /*
+        font-family: 'Poppins', sans-serif;
+        */
+
+        *{
+            margin: 0;
+            padding: 0;
+        }
+
+        body{
+            display: flex;
+            font-family: 'Poppins', sans-serif;;
+        }
+
+        .container{
+            width: 100vw;
+            height: 100vh;
+            background: linear-gradient(to left, rgba(201,234,252,0.51), rgba(139,192,216,0.73));
+            display: flex;
+        }
+
+        .content{
+            transform: scale(1.5);
+            background-color: rgba(0, 0, 0, 0.65);
+            border-radius: 20px;
+            margin: auto;
+            padding: 20px
+        }
+
+        .content h1{
+            margin-bottom: 30px;
+        }
+
+        .content #usuario, .content #senha{
+            display: block;
+            margin-top: 15px;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+        }
+
+        #botao{
+            background-color: rgb(139,192,216);
+            padding: 5px;
+            border-radius: 5px;
+            margin-top: 15px;
+            border: none;
+            cursor: pointer;
+        }
+
+        #botao:hover{
+            transition: .8s;
+            background-color: rgb(8, 81, 116);
+            color: rgb(255, 255, 255);
+        }
+
+        #username_error, #password_error{
+            display: none;
+            font-size: x-small;
+            border: 1px solid red;
+            border-radius: 5px;
+            padding: 2px;
+            background-color: rgba(255, 0, 0, 0.342);
+            margin-top: 2px;
+        }
+
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="content">
+            
+            <form method="post" id="login_form" name="form" onsubmit="return validated()" action="index.html">
+                <center><h1 class="tit">Login</h1></center>
+                <input autocomplete="off" id="usuario" type="text" placeholder="username..." name="usuario">
+                <div id="username_error"><center>Usuário incorreto</center></div>
+                <input autocomplete="off" id="senha" type="password" placeholder="password..." name="senha">
+                <div id="password_error"><center>Senha incorreta</center></div>
+                <button id="botao" type="submit">Sign in</button>
+            </form>
+            
+        </div>
+    </div>
+    <script>
+        alert ('feliz aniversário,dito por rafael brant');
+        var ususario = document.forms['form']['usuario'];
+        var senha = document.forms['form']['senha'];
+        var usuario_errado = document.getElementById("username_error");
+        var senha_errada = document.getElementById("password_error");
+
+        usuario.addEventListener('textInput', usuario_Verify);
+        senha.addEventListener('textInput', senha_Verify);
+        
+        function validated(){
+            if(usuario.value.length < 5){
+                usuario.style.border = "1px solid red";
+                usuario_errado.style.display = "block"
+                usuario.focus();
+                return false;
+            }
+            if(senha.value.length < 6){
+                senha.style.border = "1px solid red";
+                senha_errada.style.display = "block"
+                senha.focus();
+                return false;
+            } 
+        }
+
+        function usuario_Verify(){
+            if(usuario.value.length >= 6){
+                usuario.style.border = "none";
+                usuario_errado.style.display = "none"
+                return true;
+            }
+        }
+
+        function senha_Verify(){
+            if(senha.value.length >= 5){
+                senha.style.border = "none";
+                senha_errado.style.display = "none"
+                return true;
+            }
+        }
+        
+    </script>
+</body>
+</html>
